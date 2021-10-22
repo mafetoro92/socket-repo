@@ -9,53 +9,15 @@
     <title>minichat</title>
 </head>
 <body class="container">
-    <h1 class="mt-5">minichat</h1>
+    <h1>Estructura full duples</h1>
     <hr>
-
-    <form id="miFormulario">
-        <div class="row">
-            <div class="col-8">
-
-            <input type="text" placeholder="mensaje" id="txtMensaje" class="form-control">
-
-            </div>
-
-            <div class="col-4">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-
-    </form>
-
-    <div class="row">
-        <div class="col">
-            <ul id="misMensajes" class="mt-2">
-                
-
-            </ul>
-        </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js" integrity="sha512-zN6KYOtONNTOGXz0RkWX2EpavN9VdIs+2w+To+fhciFv83YA9maUpi2lzZWrOfKXdFIZZomWufBznkyHi3a8oQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        const socket=io("https://intopcol.herokuapp.com/");
+        const socket=io("https://localhost:8080");
 
-        ///referencias del DOM
-        const formulario =document.querySelector('#miFormulario');
-        const mensajes=document.querySelector('#misMensajes');
-        const txtMensaje=document.querySelector('#txtMensaje')
-
-        formulario.addEventListener('submit',(ev)=>{
-            ev.preventDefault();
-
-            const nuevoMensaje=txtMensaje.value
-            socket.emit('mensaje-to-server', {texto: nuevoMensaje});
-        })
-
-        socket.on('mensaje-from-server',(data)=>{
-            
-            mensajes.innerHTML += `<li>${data.texto}</li>`;
+        socket.on('mensaje-from-server',(data)=>{ //data
         })
 
       //  socket.on("mensaje-bienvenida",(data)=>{
